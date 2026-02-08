@@ -2,7 +2,16 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 // Define public routes that don't require authentication
-const publicRoutes = ["/", "/login", "/signup", "/posts", "/tags"];
+const publicRoutes = [
+    "/",
+    "/login",
+    "/signup",
+    "/posts",
+    "/tags",
+    "/verify-email",
+    "/forgot-password",
+    "/reset-password",
+];
 // Keep this aligned with Better-Auth cookie naming; override via env if needed.
 const sessionCookieName = process.env.NEXT_PUBLIC_AUTH_COOKIE_NAME || "better-auth.session_token";
 
