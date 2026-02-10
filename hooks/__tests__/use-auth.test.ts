@@ -21,8 +21,10 @@ describe("useAuth", () => {
             vi.mocked(useSession).mockReturnValue({
                 data: null,
                 isPending: false,
+                isRefetching: false,
                 error: null,
-            });
+                refetch: vi.fn(),
+            } as unknown as ReturnType<typeof useSession>);
 
             const { result } = renderHook(() => useAuth());
 
@@ -36,8 +38,10 @@ describe("useAuth", () => {
             vi.mocked(useSession).mockReturnValue({
                 data: null,
                 isPending: true,
+                isRefetching: false,
                 error: null,
-            });
+                refetch: vi.fn(),
+            } as unknown as ReturnType<typeof useSession>);
 
             const { result } = renderHook(() => useAuth());
 
@@ -46,13 +50,20 @@ describe("useAuth", () => {
         });
 
         it("returns error when session lookup fails", () => {
-            const mockError = new Error("Session lookup failed");
+            const mockError = {
+                message: "Session lookup failed",
+                status: 500,
+                statusText: "Internal Server Error",
+                error: new Error("Session lookup failed"),
+            };
 
             vi.mocked(useSession).mockReturnValue({
                 data: null,
                 isPending: false,
+                isRefetching: false,
                 error: mockError,
-            });
+                refetch: vi.fn(),
+            } as unknown as ReturnType<typeof useSession>);
 
             const { result } = renderHook(() => useAuth());
 
@@ -77,8 +88,10 @@ describe("useAuth", () => {
             vi.mocked(useSession).mockReturnValue({
                 data: { user: mockUser, session: {} },
                 isPending: false,
+                isRefetching: false,
                 error: null,
-            });
+                refetch: vi.fn(),
+            } as unknown as ReturnType<typeof useSession>);
 
             const { result } = renderHook(() => useAuth());
 
@@ -104,8 +117,10 @@ describe("useAuth", () => {
             vi.mocked(useSession).mockReturnValue({
                 data: mockSession,
                 isPending: false,
+                isRefetching: false,
                 error: null,
-            });
+                refetch: vi.fn(),
+            } as unknown as ReturnType<typeof useSession>);
 
             const { result } = renderHook(() => useAuth());
 
@@ -130,8 +145,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -153,8 +170,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -176,8 +195,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -199,8 +220,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -221,8 +244,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -246,8 +271,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -271,8 +298,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -296,8 +325,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 
@@ -320,8 +351,10 @@ describe("useAuth", () => {
                         session: {},
                     },
                     isPending: false,
+                    isRefetching: false,
                     error: null,
-                });
+                    refetch: vi.fn(),
+                } as unknown as ReturnType<typeof useSession>);
 
                 const { result } = renderHook(() => useAuth());
 

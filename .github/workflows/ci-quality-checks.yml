@@ -166,7 +166,6 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: "20"
-                  cache: "npm"
 
             - name: Setup Bun (for package manager)
               uses: oven-sh/setup-bun@v2
@@ -192,7 +191,7 @@ jobs:
                   echo "NEXT_PUBLIC_SITE_URL=http://localhost:3000" >> $GITHUB_ENV
 
             - name: Run tests with coverage (Node.js runtime)
-              run: npx vitest run --coverage
+              run: node ./node_modules/vitest/vitest.mjs run --coverage
 
             - name: Upload coverage reports
               uses: codecov/codecov-action@v4
