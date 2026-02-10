@@ -63,8 +63,8 @@ export function CommentList({ comments, postId }: CommentListProps) {
             toast.success("Comment updated successfully!");
             setEditingId(null);
             setEditContent("");
-        } catch (error: any) {
-            toast.error(error.message || "Failed to update comment");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to update comment");
         }
     };
 
@@ -76,8 +76,8 @@ export function CommentList({ comments, postId }: CommentListProps) {
         try {
             await deleteComment.mutateAsync({ id: commentId, postId });
             toast.success("Comment deleted successfully!");
-        } catch (error: any) {
-            toast.error(error.message || "Failed to delete comment");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to delete comment");
         }
     };
 

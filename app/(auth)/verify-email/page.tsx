@@ -35,11 +35,12 @@ export default function VerifyEmailPage() {
                 setTimeout(() => {
                     router.push("/");
                 }, 3000);
-            } catch (error: any) {
+            } catch (error) {
                 setStatus("error");
                 setErrorMessage(
-                    error?.message ||
-                        "Failed to verify email. The link may have expired or is invalid.",
+                    error instanceof Error
+                        ? error.message
+                        : "Failed to verify email. The link may have expired or is invalid.",
                 );
             }
         };
@@ -52,7 +53,7 @@ export default function VerifyEmailPage() {
             <div className="w-full max-w-md text-center">
                 {status === "loading" && (
                     <>
-                        <Loader2 className="mx-auto mb-6 h-16 w-16 animate-spin text-primary" />
+                        <Loader2 className="text-primary mx-auto mb-6 h-16 w-16 animate-spin" />
                         <h1 className="mb-2 text-2xl font-bold">Verifying Your Email</h1>
                         <p className="text-muted-foreground">
                             Please wait while we verify your email address...

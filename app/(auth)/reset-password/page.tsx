@@ -65,10 +65,11 @@ export default function ResetPasswordPage() {
             setTimeout(() => {
                 router.push("/login");
             }, 3000);
-        } catch (err: any) {
+        } catch (err) {
             setError(
-                err?.message ||
-                    "Failed to reset password. The link may have expired or is invalid.",
+                err instanceof Error
+                    ? err.message
+                    : "Failed to reset password. The link may have expired or is invalid.",
             );
         } finally {
             setIsSubmitting(false);
@@ -132,18 +133,18 @@ export default function ResetPasswordPage() {
                     <div className="space-y-2">
                         <Label htmlFor="newPassword">New Password</Label>
                         <div className="relative">
-                            <Lock className="text-muted-foreground absolute left-3 top-3 h-5 w-5" />
+                            <Lock className="text-muted-foreground absolute top-3 left-3 h-5 w-5" />
                             <Input
                                 id="newPassword"
                                 type={showPassword ? "text" : "password"}
                                 placeholder="Enter new password"
-                                className="pl-10 pr-10"
+                                className="pr-10 pl-10"
                                 {...register("newPassword")}
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="text-muted-foreground hover:text-foreground absolute right-3 top-3"
+                                className="text-muted-foreground hover:text-foreground absolute top-3 right-3"
                             >
                                 {showPassword ? (
                                     <EyeOff className="h-5 w-5" />
@@ -160,18 +161,18 @@ export default function ResetPasswordPage() {
                     <div className="space-y-2">
                         <Label htmlFor="confirmPassword">Confirm New Password</Label>
                         <div className="relative">
-                            <Lock className="text-muted-foreground absolute left-3 top-3 h-5 w-5" />
+                            <Lock className="text-muted-foreground absolute top-3 left-3 h-5 w-5" />
                             <Input
                                 id="confirmPassword"
                                 type={showConfirmPassword ? "text" : "password"}
                                 placeholder="Confirm new password"
-                                className="pl-10 pr-10"
+                                className="pr-10 pl-10"
                                 {...register("confirmPassword")}
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                                className="text-muted-foreground hover:text-foreground absolute right-3 top-3"
+                                className="text-muted-foreground hover:text-foreground absolute top-3 right-3"
                             >
                                 {showConfirmPassword ? (
                                     <EyeOff className="h-5 w-5" />

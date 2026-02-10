@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PostForm } from "@/components/post-form";
@@ -15,7 +14,6 @@ type EditPostPageClientProps = {
 };
 
 export function EditPostPageClient({ id }: EditPostPageClientProps) {
-    const router = useRouter();
     const { user, isAdmin } = useAuth();
     const { data: post, isLoading, error } = usePostById(id);
 

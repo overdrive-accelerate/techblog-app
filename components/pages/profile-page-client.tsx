@@ -21,7 +21,6 @@ import { useAuth } from "@/hooks/use-auth";
 import { useProfile, useUpdateProfile } from "@/hooks/use-profile";
 import {
     User,
-    Mail,
     Calendar,
     FileText,
     MessageSquare,

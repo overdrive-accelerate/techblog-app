@@ -76,8 +76,8 @@ export function AdminPostsTable({
             setDeleteDialogOpen(false);
             setPostToDelete(null);
             onDeleted?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to delete post");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to delete post");
         }
     };
 
@@ -277,7 +277,7 @@ export function AdminPostsTable({
                     <DialogHeader>
                         <DialogTitle>Delete Post</DialogTitle>
                         <DialogDescription>
-                            Are you sure you want to delete "{postToDelete?.title}"? This action
+                            Are you sure you want to delete {`"${postToDelete?.title}"`}? This action
                             cannot be undone.
                         </DialogDescription>
                     </DialogHeader>

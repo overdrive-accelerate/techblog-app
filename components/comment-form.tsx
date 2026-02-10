@@ -49,8 +49,8 @@ export function CommentForm({ postId, onSuccess }: CommentFormProps) {
             toast.success("Comment posted successfully!");
             reset();
             onSuccess?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to post comment");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to post comment");
         } finally {
             setIsSubmitting(false);
         }

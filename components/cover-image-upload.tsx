@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useUploadImage } from "@/hooks/use-upload";
 import { toast } from "sonner";
-import { Upload, X, ImageIcon, Loader2 } from "lucide-react";
+import { X, ImageIcon, Loader2 } from "lucide-react";
 
 interface CoverImageUploadProps {
     value?: string;
@@ -35,8 +35,8 @@ export function CoverImageUpload({ value, onChange, disabled }: CoverImageUpload
             const result = await uploadImage.mutateAsync(file);
             onChange(result.url);
             toast.success("Image uploaded successfully");
-        } catch (error: any) {
-            toast.error(error.message || "Failed to upload image");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to upload image");
         }
     };
 

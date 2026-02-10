@@ -2,7 +2,7 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { AdminPublishRequestCard } from "@/components/admin-publish-request-card";
-import { usePublishRequests, type PublishRequest } from "@/hooks/use-publish";
+import { usePublishRequests } from "@/hooks/use-publish";
 import { Clock } from "lucide-react";
 
 interface AdminPublishRequestsListProps {

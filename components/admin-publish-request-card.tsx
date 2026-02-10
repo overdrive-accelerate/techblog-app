@@ -89,8 +89,8 @@ export function AdminPublishRequestCard({ request, onUpdated }: AdminPublishRequ
             setApproveDialogOpen(false);
             setMessage("");
             onUpdated?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to approve request");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to approve request");
         }
     };
 
@@ -104,8 +104,8 @@ export function AdminPublishRequestCard({ request, onUpdated }: AdminPublishRequ
             setRejectDialogOpen(false);
             setMessage("");
             onUpdated?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to reject request");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to reject request");
         }
     };
 

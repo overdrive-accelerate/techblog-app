@@ -32,7 +32,8 @@ export default function AuthorError({ error, reset }: ErrorProps) {
 
                         <h1 className="mb-2 text-3xl font-bold">Failed to load author</h1>
                         <p className="text-muted-foreground mb-6 max-w-md">
-                            We encountered an error while loading this author page. Please try again.
+                            We encountered an error while loading this author page. Please try
+                            again.
                         </p>
 
                         {error.digest && (

@@ -73,8 +73,8 @@ export function AdminPostsPageClient() {
             setRowSelection({});
             setBulkDeleteDialogOpen(false);
             refetch();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to delete posts");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to delete posts");
         } finally {
             setIsDeleting(false);
         }

@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
             });
 
             setIsSuccess(true);
-        } catch (err: any) {
+        } catch {
             // Better-Auth doesn't expose whether email exists (security)
             // So we show success anyway to prevent email enumeration
             setIsSuccess(true);
@@ -94,7 +94,7 @@ export default function ForgotPasswordPage() {
                     <div className="space-y-2">
                         <Label htmlFor="email">Email Address</Label>
                         <div className="relative">
-                            <Mail className="text-muted-foreground absolute left-3 top-3 h-5 w-5" />
+                            <Mail className="text-muted-foreground absolute top-3 left-3 h-5 w-5" />
                             <Input
                                 id="email"
                                 type="email"

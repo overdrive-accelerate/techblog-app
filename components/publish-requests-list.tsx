@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { PublishRequestCard } from "@/components/publish-request-card";
-import { useMyPublishRequests, type PublishRequest } from "@/hooks/use-publish";
+import { useMyPublishRequests } from "@/hooks/use-publish";
 import { FileText, PenSquare } from "lucide-react";
 
 interface PublishRequestsListProps {

@@ -61,8 +61,8 @@ export function AdminTagsTable({ tags, isLoading, onEdit, onDeleted }: AdminTags
             setDeleteDialogOpen(false);
             setTagToDelete(null);
             onDeleted?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to delete tag");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to delete tag");
         }
     };
 

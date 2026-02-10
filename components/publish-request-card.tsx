@@ -27,7 +27,6 @@ import {
     Clock,
     CheckCircle,
     XCircle,
-    FileText,
     Pencil,
     Trash2,
     MessageSquare,
@@ -74,8 +73,8 @@ export function PublishRequestCard({ request, onCancelled }: PublishRequestCardP
             toast.success("Publish request cancelled");
             setCancelDialogOpen(false);
             onCancelled?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to cancel request");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to cancel request");
         }
     };
 

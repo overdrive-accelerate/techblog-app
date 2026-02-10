@@ -60,8 +60,8 @@ export function MyPostsTable({ posts, isLoading, onDeleted }: MyPostsTableProps)
             setDeleteDialogOpen(false);
             setPostToDelete(null);
             onDeleted?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to delete post");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to delete post");
         }
     };
 

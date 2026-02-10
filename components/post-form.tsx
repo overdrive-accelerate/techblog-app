@@ -96,8 +96,8 @@ export function PostForm({ post, mode }: PostFormProps) {
                 });
                 toast.success("Post updated");
             }
-        } catch (error: any) {
-            toast.error(error.message || "Failed to save post");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to save post");
         }
     };
 
@@ -115,8 +115,8 @@ export function PostForm({ post, mode }: PostFormProps) {
             toast.success("Publish request submitted");
             setPublishDialogOpen(false);
             router.push("/dashboard/posts");
-        } catch (error: any) {
-            toast.error(error.message || "Failed to submit publish request");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to submit publish request");
         }
     };
 

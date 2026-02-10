@@ -24,7 +24,7 @@ async function getPost(slug: string): Promise<Post | null> {
 
         const post = await response.json();
         return post;
-    } catch (error) {
+    } catch {
         return null;
     }
 }
@@ -91,7 +91,7 @@ export async function generateStaticParams() {
         return posts.map((post: Post) => ({
             slug: post.slug,
         }));
-    } catch (error) {
+    } catch {
         // Return empty array if API is not available at build time
         return [];
     }

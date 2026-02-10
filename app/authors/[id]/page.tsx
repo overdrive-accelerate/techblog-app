@@ -18,7 +18,7 @@ async function getAuthorData(id: string) {
             }),
         ]);
         return { author, posts: postsResponse.posts };
-    } catch (error) {
+    } catch {
         return null;
     }
 }

@@ -33,7 +33,7 @@ async function getTagData(slug: string) {
         const postsData: PostsResponse = await postsResponse.json();
 
         return { tag, posts: postsData.posts };
-    } catch (error) {
+    } catch {
         return null;
     }
 }
@@ -89,7 +89,7 @@ export async function generateStaticParams() {
         return tags.map((tag: Tag) => ({
             slug: tag.slug,
         }));
-    } catch (error) {
+    } catch {
         return [];
     }
 }

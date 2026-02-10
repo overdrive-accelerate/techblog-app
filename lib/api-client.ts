@@ -8,7 +8,7 @@ export class APIError extends Error {
     constructor(
         public status: number,
         message: string,
-        public data?: any,
+        public data?: unknown,
     ) {
         super(message);
         this.name = "APIError";
@@ -77,28 +77,28 @@ export const api = {
     get: <T>(endpoint: string, options?: RequestOptions) =>
         request<T>(endpoint, { ...options, method: "GET" }),
 
-    post: <T>(endpoint: string, data?: any, options?: RequestOptions) =>
+    post: <T>(endpoint: string, data?: unknown, options?: RequestOptions) =>
         request<T>(endpoint, {
             ...options,
             method: "POST",
             body: data ? JSON.stringify(data) : undefined,
         }),
 
-    put: <T>(endpoint: string, data?: any, options?: RequestOptions) =>
+    put: <T>(endpoint: string, data?: unknown, options?: RequestOptions) =>
         request<T>(endpoint, {
             ...options,
             method: "PUT",
             body: data ? JSON.stringify(data) : undefined,
         }),
 
-    patch: <T>(endpoint: string, data?: any, options?: RequestOptions) =>
+    patch: <T>(endpoint: string, data?: unknown, options?: RequestOptions) =>
         request<T>(endpoint, {
             ...options,
             method: "PATCH",
             body: data ? JSON.stringify(data) : undefined,
         }),
 
-    delete: <T>(endpoint: string, data?: any, options?: RequestOptions) =>
+    delete: <T>(endpoint: string, data?: unknown, options?: RequestOptions) =>
         request<T>(endpoint, {
             ...options,
             method: "DELETE",
@@ -116,7 +116,7 @@ export const api = {
                 // Don't set Content-Type for FormData - browser will set it with boundary
                 ...headers,
                 "Content-Type": undefined,
-            } as any,
+            } as HeadersInit,
         });
     },
 };

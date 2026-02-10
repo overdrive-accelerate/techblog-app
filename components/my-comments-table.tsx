@@ -74,8 +74,8 @@ export function MyCommentsTable({ comments, isLoading, onUpdated }: MyCommentsTa
             setEditDialogOpen(false);
             setSelectedComment(null);
             onUpdated?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to update comment");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to update comment");
         }
     };
 
@@ -91,8 +91,8 @@ export function MyCommentsTable({ comments, isLoading, onUpdated }: MyCommentsTa
             setDeleteDialogOpen(false);
             setSelectedComment(null);
             onUpdated?.();
-        } catch (error: any) {
-            toast.error(error.message || "Failed to delete comment");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to delete comment");
         }
     };
 

@@ -154,8 +154,8 @@ export function MarkdownEditor({ value, onChange, disabled, error }: MarkdownEdi
             }
 
             toast.success("Image uploaded and inserted");
-        } catch (error: any) {
-            toast.error(error.message || "Failed to upload image");
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : "Failed to upload image");
         }
     };
 

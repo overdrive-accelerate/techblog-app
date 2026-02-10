@@ -89,8 +89,10 @@ export function TagFormDialog({ open, onOpenChange, tag, onSuccess }: TagFormDia
             }
             onOpenChange(false);
             onSuccess?.();
-        } catch (error: any) {
-            toast.error(error.message || `Failed to ${isEditing ? "update" : "create"} tag`);
+        } catch (error) {
+            toast.error(
+                error instanceof Error ? error.message : `Failed to ${isEditing ? "update" : "create"} tag`,
+            );
         }
     };
 

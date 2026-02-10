@@ -11,7 +11,7 @@ export default function PostNotFound() {
                 <div className="flex min-h-[400px] flex-col items-center justify-center text-center">
                     <h1 className="mb-4 text-3xl font-bold">Post Not Found</h1>
                     <p className="text-muted-foreground mb-6">
-                        The post you're looking for doesn't exist or has been removed.
+                        The post you&apos;re looking for doesn&apos;t exist or has been removed.
                     </p>
                     <Button asChild>
                         <Link href="/">
