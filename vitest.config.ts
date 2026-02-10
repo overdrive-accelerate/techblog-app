@@ -35,6 +35,13 @@ export default defineConfig({
 
         // Exclude patterns
         exclude: ["node_modules", ".next", "out", "build", "dist", "**/*.config.{js,ts,mjs,cjs}"],
+
+        // Server options for module resolution
+        server: {
+            deps: {
+                inline: ["zod"],
+            },
+        },
     },
     resolve: {
         alias: {
