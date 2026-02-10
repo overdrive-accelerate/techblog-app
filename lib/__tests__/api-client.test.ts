@@ -65,10 +65,7 @@ describe("api-client", () => {
         it("throws APIError on 404", async () => {
             server.use(
                 http.get(`${API_BASE_URL}/api/posts/999`, () => {
-                    return HttpResponse.json(
-                        { error: "Post not found" },
-                        { status: 404 },
-                    );
+                    return HttpResponse.json({ error: "Post not found" }, { status: 404 });
                 }),
             );
 
@@ -82,10 +79,7 @@ describe("api-client", () => {
         it("throws APIError on 500", async () => {
             server.use(
                 http.get(`${API_BASE_URL}/api/posts`, () => {
-                    return HttpResponse.json(
-                        { error: "Internal server error" },
-                        { status: 500 },
-                    );
+                    return HttpResponse.json({ error: "Internal server error" }, { status: 500 });
                 }),
             );
 
@@ -187,10 +181,9 @@ describe("api-client", () => {
                 }),
             );
 
-            const result = await api.patch<{ id: string; status: string }>(
-                "/api/posts/1",
-                { status: "PUBLISHED" },
-            );
+            const result = await api.patch<{ id: string; status: string }>("/api/posts/1", {
+                status: "PUBLISHED",
+            });
 
             expect(result.status).toBe("PUBLISHED");
         });
@@ -317,10 +310,7 @@ describe("api-client", () => {
         it("uses error.message from JSON response if available", async () => {
             server.use(
                 http.get(`${API_BASE_URL}/api/posts`, () => {
-                    return HttpResponse.json(
-                        { message: "Custom error message" },
-                        { status: 400 },
-                    );
+                    return HttpResponse.json({ message: "Custom error message" }, { status: 400 });
                 }),
             );
 

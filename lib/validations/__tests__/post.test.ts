@@ -272,7 +272,8 @@ describe("post validation schemas", () => {
             it("accepts valid complete form data", () => {
                 const result = postFormSchema.safeParse({
                     title: "My Awesome Blog Post",
-                    content: "This is a comprehensive blog post about testing with Vitest and React Testing Library. It contains enough content to pass the minimum character requirement.",
+                    content:
+                        "This is a comprehensive blog post about testing with Vitest and React Testing Library. It contains enough content to pass the minimum character requirement.",
                     excerpt: "Learn how to test your React applications effectively",
                     coverImage: "https://example.com/cover.jpg",
                     tags: ["testing", "react", "vitest"],
