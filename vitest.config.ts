@@ -34,14 +34,7 @@ export default defineConfig({
         include: ["**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
 
         // Exclude patterns
-        exclude: [
-            "node_modules",
-            ".next",
-            "out",
-            "build",
-            "dist",
-            "**/*.config.{js,ts,mjs,cjs}",
-        ],
+        exclude: ["node_modules", ".next", "out", "build", "dist", "**/*.config.{js,ts,mjs,cjs}"],
     },
     resolve: {
         alias: {
