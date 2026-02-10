@@ -65,11 +65,7 @@ export async function generateMetadata({
     };
 }
 
-export default async function AuthorPage({
-    params,
-}: {
-    params: Promise<{ id: string }>;
-}) {
+export default async function AuthorPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const data = await getAuthorData(id);
 
@@ -106,11 +102,13 @@ export default async function AuthorPage({
 
                     <div className="flex-1">
                         <h1 className="mb-2 text-4xl font-bold">{author.name || "Anonymous"}</h1>
-                        <p className="text-muted-foreground mb-2 text-sm uppercase tracking-wide">
+                        <p className="text-muted-foreground mb-2 text-sm tracking-wide uppercase">
                             {author.role}
                         </p>
                         {author.profile?.bio && (
-                            <p className="text-muted-foreground mb-4 max-w-2xl">{author.profile.bio}</p>
+                            <p className="text-muted-foreground mb-4 max-w-2xl">
+                                {author.profile.bio}
+                            </p>
                         )}
                         {author.profile?.website && (
                             <a
@@ -135,9 +133,7 @@ export default async function AuthorPage({
                         <PostsGrid posts={posts} />
                     ) : (
                         <div className="flex min-h-[300px] items-center justify-center">
-                            <p className="text-muted-foreground text-lg">
-                                No published posts yet.
-                            </p>
+                            <p className="text-muted-foreground text-lg">No published posts yet.</p>
                         </div>
                     )}
                 </div>

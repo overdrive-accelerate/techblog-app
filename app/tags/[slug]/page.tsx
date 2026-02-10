@@ -17,12 +17,9 @@ async function getTagData(slug: string) {
             fetch(`${API_BASE_URL}/api/tags/${slug}`, {
                 next: { revalidate: 86400 }, // Cache for 24 hours
             }),
-            fetch(
-                `${API_BASE_URL}/api/posts?tagSlug=${slug}&status=PUBLISHED&limit=100`,
-                {
-                    next: { revalidate: 86400 },
-                },
-            ),
+            fetch(`${API_BASE_URL}/api/posts?tagSlug=${slug}&status=PUBLISHED&limit=100`, {
+                next: { revalidate: 86400 },
+            }),
         ]);
 
         if (!tagResponse.ok) {
@@ -59,7 +56,8 @@ export async function generateMetadata({
     return {
         title: `${tag.name} | Technical Blog`,
         description:
-            tag.description || `Explore ${postCount} articles about ${tag.name} on our technical blog.`,
+            tag.description ||
+            `Explore ${postCount} articles about ${tag.name} on our technical blog.`,
         openGraph: {
             title: tag.name,
             description:
@@ -94,11 +92,7 @@ export async function generateStaticParams() {
     }
 }
 
-export default async function TagPage({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}) {
+export default async function TagPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const data = await getTagData(slug);
 

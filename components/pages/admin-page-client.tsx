@@ -69,7 +69,9 @@ export function AdminPageClient() {
             {/* Page Header */}
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Admin Overview</h1>
+                    <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                        Admin Overview
+                    </h1>
                     <p className="text-muted-foreground">
                         Welcome back! Here&apos;s what&apos;s happening on your platform.
                     </p>
@@ -136,9 +138,7 @@ export function AdminPageClient() {
                                 <div className="text-2xl font-bold">
                                     {postsData?.pagination.total || 0}
                                 </div>
-                                <p className="text-muted-foreground text-xs">
-                                    Across all authors
-                                </p>
+                                <p className="text-muted-foreground text-xs">Across all authors</p>
                             </>
                         )}
                     </CardContent>
@@ -157,9 +157,7 @@ export function AdminPageClient() {
                         ) : (
                             <>
                                 <div className="text-2xl font-bold">{pendingRequests.length}</div>
-                                <p className="text-muted-foreground text-xs">
-                                    Awaiting review
-                                </p>
+                                <p className="text-muted-foreground text-xs">Awaiting review</p>
                             </>
                         )}
                     </CardContent>
@@ -180,9 +178,7 @@ export function AdminPageClient() {
                                 <div className="text-2xl font-bold">
                                     {usersData?.pagination.total || 0}
                                 </div>
-                                <p className="text-muted-foreground text-xs">
-                                    Registered accounts
-                                </p>
+                                <p className="text-muted-foreground text-xs">Registered accounts</p>
                             </>
                         )}
                     </CardContent>
@@ -203,9 +199,7 @@ export function AdminPageClient() {
                                 <div className="text-2xl font-bold">
                                     {commentsData?.pagination?.total || 0}
                                 </div>
-                                <p className="text-muted-foreground text-xs">
-                                    User interactions
-                                </p>
+                                <p className="text-muted-foreground text-xs">User interactions</p>
                             </>
                         )}
                     </CardContent>
@@ -360,9 +354,7 @@ export function AdminPageClient() {
                                     <div key={user.id} className="flex items-center gap-3">
                                         <Avatar className="h-10 w-10">
                                             <AvatarImage src={user.image || undefined} />
-                                            <AvatarFallback>
-                                                {user.name?.[0] || "U"}
-                                            </AvatarFallback>
+                                            <AvatarFallback>{user.name?.[0] || "U"}</AvatarFallback>
                                         </Avatar>
                                         <div className="min-w-0 flex-1">
                                             <div className="flex items-center gap-2">
@@ -370,8 +362,16 @@ export function AdminPageClient() {
                                                     {user.name || "Unnamed"}
                                                 </span>
                                                 <Badge
-                                                    variant={user.role === "ADMIN" ? "default" : "secondary"}
-                                                    className={user.role === "ADMIN" ? "bg-amber-500 hover:bg-amber-600" : ""}
+                                                    variant={
+                                                        user.role === "ADMIN"
+                                                            ? "default"
+                                                            : "secondary"
+                                                    }
+                                                    className={
+                                                        user.role === "ADMIN"
+                                                            ? "bg-amber-500 hover:bg-amber-600"
+                                                            : ""
+                                                    }
                                                 >
                                                     {user.role}
                                                 </Badge>
@@ -403,7 +403,7 @@ export function AdminPageClient() {
                     <CardDescription>Common administrative tasks</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                         <Button variant="outline" className="h-auto flex-col gap-2 py-4" asChild>
                             <Link href="/admin/requests">
                                 <Clock className="h-5 w-5 text-amber-600" />
@@ -428,7 +428,11 @@ export function AdminPageClient() {
                                 <span className="text-xs sm:text-sm">Users</span>
                             </Link>
                         </Button>
-                        <Button variant="outline" className="h-auto flex-col gap-2 py-4 col-span-2 sm:col-span-1" asChild>
+                        <Button
+                            variant="outline"
+                            className="col-span-2 h-auto flex-col gap-2 py-4 sm:col-span-1"
+                            asChild
+                        >
                             <Link href="/admin/comments">
                                 <MessageSquare className="h-5 w-5 text-pink-600" />
                                 <span className="text-xs sm:text-sm">Comments</span>

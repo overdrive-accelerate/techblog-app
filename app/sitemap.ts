@@ -29,9 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     try {
         // Fetch published posts
-        const postsResponse = await fetch(
-            `${API_BASE_URL}/api/posts?status=PUBLISHED&limit=1000`,
-        );
+        const postsResponse = await fetch(`${API_BASE_URL}/api/posts?status=PUBLISHED&limit=1000`);
         const postsData: PostsResponse = await postsResponse.json();
         const posts = postsData.posts || [];
 

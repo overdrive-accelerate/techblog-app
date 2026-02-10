@@ -4,14 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/use-auth";
-import {
-    FileText,
-    PenSquare,
-    Clock,
-    MessageSquare,
-    Shield,
-    LayoutDashboard,
-} from "lucide-react";
+import { FileText, PenSquare, Clock, MessageSquare, Shield, LayoutDashboard } from "lucide-react";
 
 interface SidebarItem {
     title: string;

@@ -6,15 +6,7 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { usePublishRequests } from "@/hooks/use-publish";
-import {
-    LayoutDashboard,
-    FileText,
-    Clock,
-    Tags,
-    Users,
-    MessageSquare,
-    Shield,
-} from "lucide-react";
+import { LayoutDashboard, FileText, Clock, Tags, Users, MessageSquare, Shield } from "lucide-react";
 
 interface SidebarItemProps {
     title: string;
@@ -26,7 +18,15 @@ interface SidebarItemProps {
     onClick?: () => void;
 }
 
-function SidebarItem({ title, href, icon, badge, badgeVariant = "default", isActive, onClick }: SidebarItemProps) {
+function SidebarItem({
+    title,
+    href,
+    icon,
+    badge,
+    badgeVariant = "default",
+    isActive,
+    onClick,
+}: SidebarItemProps) {
     return (
         <Link
             href={href}
@@ -44,11 +44,19 @@ function SidebarItem({ title, href, icon, badge, badgeVariant = "default", isAct
             </div>
             {badge !== undefined && badge > 0 && (
                 <Badge
-                    variant={isActive ? "secondary" : badgeVariant === "warning" ? "default" : badgeVariant}
+                    variant={
+                        isActive
+                            ? "secondary"
+                            : badgeVariant === "warning"
+                              ? "default"
+                              : badgeVariant
+                    }
                     className={cn(
                         "ml-auto h-5 min-w-5 justify-center px-1.5 text-xs",
                         isActive && "bg-white/20 text-white hover:bg-white/30",
-                        !isActive && badgeVariant === "warning" && "bg-amber-500 text-white hover:bg-amber-600",
+                        !isActive &&
+                            badgeVariant === "warning" &&
+                            "bg-amber-500 text-white hover:bg-amber-600",
                     )}
                 >
                     {badge}
@@ -67,7 +75,8 @@ export function AdminSidebar({ mobile = false, onNavigate }: AdminSidebarProps =
     const pathname = usePathname();
     const { data: requestsData, isLoading: requestsLoading } = usePublishRequests();
 
-    const pendingRequestsCount = requestsData?.requests?.filter((r) => r.status === "PENDING").length || 0;
+    const pendingRequestsCount =
+        requestsData?.requests?.filter((r) => r.status === "PENDING").length || 0;
 
     const sidebarItems = [
         {
@@ -121,7 +130,7 @@ export function AdminSidebar({ mobile = false, onNavigate }: AdminSidebarProps =
 
             {/* Navigation */}
             <nav className="flex-1 space-y-1 overflow-y-auto p-3">
-                <p className="text-muted-foreground mb-2 px-3 text-xs font-medium uppercase tracking-wider">
+                <p className="text-muted-foreground mb-2 px-3 text-xs font-medium tracking-wider uppercase">
                     Management
                 </p>
                 {requestsLoading ? (
@@ -160,8 +169,6 @@ export function AdminSidebar({ mobile = false, onNavigate }: AdminSidebarProps =
     }
 
     return (
-        <aside className="bg-card hidden w-64 flex-col border-r lg:flex">
-            {sidebarContent}
-        </aside>
+        <aside className="bg-card hidden w-64 flex-col border-r lg:flex">{sidebarContent}</aside>
     );
 }

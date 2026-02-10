@@ -116,7 +116,9 @@ export function PostForm({ post, mode }: PostFormProps) {
             setPublishDialogOpen(false);
             router.push("/dashboard/posts");
         } catch (error) {
-            toast.error(error instanceof Error ? error.message : "Failed to submit publish request");
+            toast.error(
+                error instanceof Error ? error.message : "Failed to submit publish request",
+            );
         }
     };
 

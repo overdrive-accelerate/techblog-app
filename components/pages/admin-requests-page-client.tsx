@@ -32,14 +32,18 @@ export function AdminRequestsPageClient() {
                     </Button>
                     <div>
                         <div className="flex items-center gap-2">
-                            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Publish Requests</h1>
+                            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                                Publish Requests
+                            </h1>
                             {pendingCount > 0 && (
                                 <Badge className="bg-amber-500 hover:bg-amber-600">
                                     {pendingCount} pending
                                 </Badge>
                             )}
                         </div>
-                        <p className="text-muted-foreground">Review and manage author publish requests</p>
+                        <p className="text-muted-foreground">
+                            Review and manage author publish requests
+                        </p>
                     </div>
                 </div>
             </div>
@@ -50,7 +54,9 @@ export function AdminRequestsPageClient() {
                     onClick={() => setActiveTab("PENDING")}
                     className={cn(
                         "flex items-center gap-3 rounded-lg border p-4 text-left transition-colors",
-                        activeTab === "PENDING" ? "border-amber-500 bg-amber-500/5" : "hover:bg-muted/50"
+                        activeTab === "PENDING"
+                            ? "border-amber-500 bg-amber-500/5"
+                            : "hover:bg-muted/50",
                     )}
                 >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/10">
@@ -65,7 +71,9 @@ export function AdminRequestsPageClient() {
                     onClick={() => setActiveTab("APPROVED")}
                     className={cn(
                         "flex items-center gap-3 rounded-lg border p-4 text-left transition-colors",
-                        activeTab === "APPROVED" ? "border-green-500 bg-green-500/5" : "hover:bg-muted/50"
+                        activeTab === "APPROVED"
+                            ? "border-green-500 bg-green-500/5"
+                            : "hover:bg-muted/50",
                     )}
                 >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10">
@@ -80,7 +88,9 @@ export function AdminRequestsPageClient() {
                     onClick={() => setActiveTab("REJECTED")}
                     className={cn(
                         "flex items-center gap-3 rounded-lg border p-4 text-left transition-colors",
-                        activeTab === "REJECTED" ? "border-red-500 bg-red-500/5" : "hover:bg-muted/50"
+                        activeTab === "REJECTED"
+                            ? "border-red-500 bg-red-500/5"
+                            : "hover:bg-muted/50",
                     )}
                 >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-500/10">
@@ -95,7 +105,7 @@ export function AdminRequestsPageClient() {
                     onClick={() => setActiveTab("all")}
                     className={cn(
                         "flex items-center gap-3 rounded-lg border p-4 text-left transition-colors",
-                        activeTab === "all" ? "border-blue-500 bg-blue-500/5" : "hover:bg-muted/50"
+                        activeTab === "all" ? "border-blue-500 bg-blue-500/5" : "hover:bg-muted/50",
                     )}
                 >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10">

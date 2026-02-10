@@ -20,6 +20,7 @@ A modern, full-featured technical blogging platform built with Next.js 16, featu
 The Blog App is a comprehensive content management system that enables authors to create and manage posts while administrators oversee content moderation and platform management. Built with Next.js 16 App Router, it provides a seamless experience for content creators and readers alike.
 
 **Key Highlights:**
+
 - Multi-role system (Admin, Author, Reader)
 - Publishing workflow with approval system
 - Markdown-based content creation
@@ -30,6 +31,7 @@ The Blog App is a comprehensive content management system that enables authors t
 ## Features
 
 ### Public Features
+
 - **Homepage** with featured posts carousel and recent posts grid
 - **Post browsing** with filtering by tags, authors, and search
 - **Post reading** with markdown rendering and related posts
@@ -38,6 +40,7 @@ The Blog App is a comprehensive content management system that enables authors t
 - **Commenting system** on published posts
 
 ### Author Dashboard
+
 - Create, edit, and manage posts
 - Draft system for work-in-progress content
 - Submit posts for admin approval
@@ -45,6 +48,7 @@ The Blog App is a comprehensive content management system that enables authors t
 - Manage personal comments
 
 ### Admin Panel
+
 - Dashboard with platform statistics
 - Review and approve/reject publish requests
 - Manage all posts across the platform
@@ -53,6 +57,7 @@ The Blog App is a comprehensive content management system that enables authors t
 - Comment moderation
 
 ### User Features
+
 - Authentication via Better-Auth
 - Profile management
 - Dark/light theme toggle
@@ -61,11 +66,13 @@ The Blog App is a comprehensive content management system that enables authors t
 ## Tech Stack
 
 ### Core
+
 - **Next.js 16.1.1** - React framework with App Router
 - **React 19.2.3** - UI library
 - **TypeScript 5.9.3** - Type safety
 
 ### UI & Styling
+
 - **Tailwind CSS 4.1.18** - Utility-first CSS framework
 - **Radix UI** - Accessible component primitives
 - **Lucide React** - Icon library
@@ -73,18 +80,22 @@ The Blog App is a comprehensive content management system that enables authors t
 - **Sonner** - Toast notifications
 
 ### Data & State
+
 - **Tanstack/react-query 5.90.20** - Server state management
 - **Tanstack/react-table 8.21.3** - Table components
 - **React Hook Form 7.71.1** - Form state management
 
 ### Validation & Auth
+
 - **Zod 4.3.6** - Schema validation
 - **Better-Auth 1.4.17** - Authentication
 
 ### Content
+
 - **react-markdown 10.1.0** - Markdown rendering
 
 ### Development
+
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
 
@@ -99,29 +110,32 @@ The Blog App is a comprehensive content management system that enables authors t
 ### Installation
 
 1. **Install dependencies:**
-   ```bash
-   pnpm install
-   # or
-   bun install
-   ```
+
+    ```bash
+    pnpm install
+    # or
+    bun install
+    ```
 
 2. **Set up environment variables:**
-   
-   Create a `.env.local` file in the root directory:
-   ```env
-   NEXT_PUBLIC_API_URL=http://localhost:3001
-   ```
+
+    Create a `.env.local` file in the root directory:
+
+    ```env
+    NEXT_PUBLIC_API_URL=http://localhost:3001
+    ```
 
 3. **Start the development server:**
-   ```bash
-   pnpm dev
-   # or
-   bun dev
-   ```
+
+    ```bash
+    pnpm dev
+    # or
+    bun dev
+    ```
 
 4. **Open your browser:**
-   
-   Navigate to [http://localhost:3000](http://localhost:3000)
+
+    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Building for Production
 
@@ -150,22 +164,26 @@ The application follows Next.js 16 App Router patterns:
 ### Key Patterns
 
 **Component Organization:**
+
 - `components/` - Reusable UI components
 - `components/pages/` - Page-specific client components
 - `components/ui/` - Base UI primitives (Radix UI)
 - `components/layouts/` - Layout components
 
 **Data Fetching:**
+
 - React Query for server state management
 - Custom hooks encapsulate data fetching logic
 - Type-safe API client handles all HTTP requests
 
 **State Management:**
+
 - React Query - Server state
 - React Hook Form - Form state
 - Better-Auth - Authentication state
 
 **Styling:**
+
 - Tailwind CSS v4 for utility-first styling
 - Radix UI for accessible components
 - Next Themes for theme management
@@ -200,7 +218,7 @@ Route protection is handled by `proxy.ts` middleware:
 ### Usage
 
 ```typescript
-import { useAuth } from '@/hooks/use-auth';
+import { useAuth } from "@/hooks/use-auth";
 
 const { user, isAuthenticated, isLoading } = useAuth();
 ```
@@ -227,21 +245,21 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 ### Usage Examples
 
 ```typescript
-import { api } from '@/lib/api-client';
+import { api } from "@/lib/api-client";
 
 // GET request
-const posts = await api.get<PostsResponse>('/posts', {
-  params: { page: 1, limit: 10 }
+const posts = await api.get<PostsResponse>("/posts", {
+    params: { page: 1, limit: 10 },
 });
 
 // POST request
-const newPost = await api.post<Post>('/posts', {
-  title: 'My Post',
-  content: '...'
+const newPost = await api.post<Post>("/posts", {
+    title: "My Post",
+    content: "...",
 });
 
 // FormData upload
-const uploaded = await api.postFormData('/upload', formData);
+const uploaded = await api.postFormData("/upload", formData);
 ```
 
 ### Data Fetching Hooks
@@ -251,10 +269,10 @@ Custom hooks provide React Query integration:
 ```typescript
 // Fetch posts
 const { data, isLoading, error } = usePosts({
-  page: 1,
-  limit: 10,
-  status: 'PUBLISHED',
-  tagSlug: 'react'
+    page: 1,
+    limit: 10,
+    status: "PUBLISHED",
+    tagSlug: "react",
 });
 
 // Fetch tags
@@ -269,22 +287,24 @@ const { data: comments } = useComments(postId);
 ### Adding a New Page
 
 1. Create a page file in `app/[route]/page.tsx`:
-   ```typescript
-   import { PageClient } from '@/components/pages/page-client';
-   
-   export default function Page() {
-     return <PageClient />;
-   }
-   ```
+
+    ```typescript
+    import { PageClient } from '@/components/pages/page-client';
+
+    export default function Page() {
+      return <PageClient />;
+    }
+    ```
 
 2. Create the client component in `components/pages/page-client.tsx`:
-   ```typescript
-   "use client";
-   
-   export function PageClient() {
-     // Component logic
-   }
-   ```
+
+    ```typescript
+    "use client";
+
+    export function PageClient() {
+        // Component logic
+    }
+    ```
 
 ### Adding a New Component
 
@@ -294,11 +314,11 @@ Create component file in `components/`:
 "use client"; // If using hooks or interactivity
 
 interface ComponentProps {
-  // Props interface
+    // Props interface
 }
 
 export function Component({ ...props }: ComponentProps) {
-  // Component implementation
+    // Component implementation
 }
 ```
 
@@ -307,14 +327,14 @@ export function Component({ ...props }: ComponentProps) {
 Create a hook file in `hooks/`:
 
 ```typescript
-import { useQuery } from '@tanstack/react-query';
-import { api } from '@/lib/api-client';
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api-client";
 
 export function useCustomData() {
-  return useQuery({
-    queryKey: ['custom-data'],
-    queryFn: () => api.get('/custom-endpoint')
-  });
+    return useQuery({
+        queryKey: ["custom-data"],
+        queryFn: () => api.get("/custom-endpoint"),
+    });
 }
 ```
 
@@ -323,17 +343,17 @@ export function useCustomData() {
 Use React Hook Form with Zod validation:
 
 ```typescript
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 const schema = z.object({
-  title: z.string().min(1),
-  content: z.string().min(10)
+    title: z.string().min(1),
+    content: z.string().min(10),
 });
 
 const form = useForm({
-  resolver: zodResolver(schema)
+    resolver: zodResolver(schema),
 });
 ```
 
@@ -383,6 +403,7 @@ This creates an optimized production build in the `.next` directory.
 ### Deployment Platforms
 
 **Vercel (Recommended):**
+
 1. Push code to GitHub
 2. Import repository on Vercel
 3. Configure environment variables

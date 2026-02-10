@@ -23,15 +23,7 @@ import {
 import { useCancelPublishRequest, type PublishRequest } from "@/hooks/use-publish";
 import { formatDistanceToNow } from "@/lib/date-utils";
 import { toast } from "sonner";
-import {
-    Clock,
-    CheckCircle,
-    XCircle,
-    Pencil,
-    Trash2,
-    MessageSquare,
-    Loader2,
-} from "lucide-react";
+import { Clock, CheckCircle, XCircle, Pencil, Trash2, MessageSquare, Loader2 } from "lucide-react";
 
 interface PublishRequestCardProps {
     request: PublishRequest;

@@ -92,7 +92,9 @@ export function AdminPostsPageClient() {
                     </Button>
                     <div>
                         <div className="flex items-center gap-2">
-                            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">All Posts</h1>
+                            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                                All Posts
+                            </h1>
                             {data?.pagination.total !== undefined && (
                                 <span className="text-muted-foreground text-sm">
                                     ({data.pagination.total})

@@ -36,12 +36,7 @@ import {
 const profileSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters").max(100),
     bio: z.string().max(500, "Bio must be less than 500 characters").optional(),
-    website: z
-        .string()
-        .url("Please enter a valid URL")
-        .max(200)
-        .optional()
-        .or(z.literal("")),
+    website: z.string().url("Please enter a valid URL").max(200).optional().or(z.literal("")),
 });
 
 type ProfileFormData = z.infer<typeof profileSchema>;
@@ -193,12 +188,16 @@ export function ProfilePageClient() {
                                                     {profile.emailVerified ? (
                                                         <>
                                                             <CheckCircle className="h-4 w-4 text-green-500" />
-                                                            <span className="text-green-600">Email verified</span>
+                                                            <span className="text-green-600">
+                                                                Email verified
+                                                            </span>
                                                         </>
                                                     ) : (
                                                         <>
                                                             <XCircle className="h-4 w-4 text-amber-500" />
-                                                            <span className="text-amber-600">Email not verified</span>
+                                                            <span className="text-amber-600">
+                                                                Email not verified
+                                                            </span>
                                                         </>
                                                     )}
                                                 </div>
@@ -211,7 +210,10 @@ export function ProfilePageClient() {
                                 </CardHeader>
                                 <CardContent>
                                     {isEditing ? (
-                                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                                        <form
+                                            onSubmit={handleSubmit(onSubmit)}
+                                            className="space-y-4"
+                                        >
                                             <div className="space-y-2">
                                                 <Label htmlFor="name">Name</Label>
                                                 <div className="relative">
@@ -300,7 +302,8 @@ export function ProfilePageClient() {
                                                 </div>
                                             ) : (
                                                 <p className="text-muted-foreground text-sm italic">
-                                                    No bio added yet. Click &quot;Edit Profile&quot; to add one.
+                                                    No bio added yet. Click &quot;Edit Profile&quot;
+                                                    to add one.
                                                 </p>
                                             )}
 
@@ -329,7 +332,9 @@ export function ProfilePageClient() {
                             <Card>
                                 <CardHeader>
                                     <CardTitle className="text-lg">Activity</CardTitle>
-                                    <CardDescription>Your contributions to TechBlog</CardDescription>
+                                    <CardDescription>
+                                        Your contributions to TechBlog
+                                    </CardDescription>
                                 </CardHeader>
                                 <CardContent>
                                     <div className="grid gap-4 sm:grid-cols-3">

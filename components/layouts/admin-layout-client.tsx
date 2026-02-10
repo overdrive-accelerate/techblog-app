@@ -8,13 +8,7 @@ import { AdminSidebar } from "@/components/admin-sidebar";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Shield, ShieldAlert } from "lucide-react";
 
 export function AdminLayoutClient({ children }: { children: React.ReactNode }) {

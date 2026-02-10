@@ -110,7 +110,7 @@ export function AdminPostsTable({
             cell: ({ row }) => {
                 const post = row.original;
                 return (
-                    <div className="flex min-w-[200px] max-w-[300px] flex-col">
+                    <div className="flex max-w-[300px] min-w-[200px] flex-col">
                         <span className="line-clamp-1 font-medium">{post.title}</span>
                         <span className="text-muted-foreground line-clamp-1 text-sm">
                             {post.excerpt || post.content.substring(0, 60) + "..."}
@@ -277,8 +277,8 @@ export function AdminPostsTable({
                     <DialogHeader>
                         <DialogTitle>Delete Post</DialogTitle>
                         <DialogDescription>
-                            Are you sure you want to delete {`"${postToDelete?.title}"`}? This action
-                            cannot be undone.
+                            Are you sure you want to delete {`"${postToDelete?.title}"`}? This
+                            action cannot be undone.
                         </DialogDescription>
                     </DialogHeader>
                     <DialogFooter>
